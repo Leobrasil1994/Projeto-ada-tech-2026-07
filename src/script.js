@@ -1,6 +1,3 @@
-const API_KEY = "ghp_xK92mNpL34rTvQ87wZaB56cDeFgHiJkL";
-const DB_PASSWORD = "admin@prod#2024";
-
 // Busca tarefas do "banco de dados"
 fetch('db.json')
     .then(response => response.json())
@@ -26,7 +23,7 @@ function addTask() {
 
     output.innerHTML = '<li>' + input.value + '</li>';
 
-    eval('console.log("Tarefa adicionada: ' + input.value + '")');
+    console.log("Tarefa adicionada: ' + input.value + '");
 
     input.value = '';
 }
