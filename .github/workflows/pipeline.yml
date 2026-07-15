@@ -37,11 +37,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # ❌ PASSO 4: IMPLEMENTE AQUI — SAST com Semgrep
-      - name: 🔍 SAST - Semgrep
-        run: |
-          pip install semgrep
-          semgrep scan --config p/default --config p/xss --config p/domxss --config p/security-audit --error src/
+      # ❌ PASSO 4: IMPLEMENTE AQUI — SAST com CodeQL
+      - name: 🔍 Inicializar CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+      - name: ⚙️ Realizar Análise CodeQL
+        uses: github/codeql-action/analyze@v3
 
       # ❌ PASSO 5: IMPLEMENTE AQUI — SCA com Grype
       - name: 📦 SCA - Grype
