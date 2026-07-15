@@ -11,9 +11,10 @@ fetch('db.json')
             list.appendChild(li);
         });
     })
-    .catch(err => {        
+    .catch(err => {  
+        console.error(err);      
         document.getElementById('db-status').innerText =
-            'Erro interno: ' + err.stack;
+            'Erro ao carregar tarefas';
     });
 
 // Adiciona nova tarefa na tela
@@ -21,9 +22,11 @@ function addTask() {
     const input = document.getElementById('new-task');
     const output = document.getElementById('output');
 
-    output.innerHTML = '<li>' + input.value + '</li>';
+    let li = document.createElement('li');
+    li.textContent = input.value;
+    output.appendChild(li);
 
-    eval('console.log("Tarefa adicionada: ' + input.value + '")');
+    console.log("Tarefa adicionada: ' + input.value + '");
 
     input.value = '';
 }
