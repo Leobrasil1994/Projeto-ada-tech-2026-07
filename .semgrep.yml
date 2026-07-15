@@ -1,0 +1,12 @@
+rules:
+  - id: bloqueio-de-eval
+    pattern: eval(...)
+    message: "🚨 [Segurança] Uso de eval() detectado. Isso permite execução de código arbitrário (Code Injection)."
+    languages: [javascript]
+    severity: ERROR
+
+  - id: bloqueio-de-innerhtml
+    pattern: $X.innerHTML = $Y
+    message: "🚨 [Segurança] Uso de innerHTML detectado. Risco altíssimo de manipulação de DOM e XSS."
+    languages: [javascript]
+    severity: ERROR
