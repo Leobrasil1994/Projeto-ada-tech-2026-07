@@ -1,3 +1,6 @@
+const API_KEY = "ghp_xK92mNpL34rTvQ87wZaB56cDeFgHiJkL";
+const DB_PASSWORD = "admin@prod#2024";
+
 // Busca tarefas do "banco de dados"
 fetch('db.json')
     .then(response => response.json())
@@ -11,10 +14,9 @@ fetch('db.json')
             list.appendChild(li);
         });
     })
-    .catch(err => {  
-        console.error(err);      
+    .catch(err => {        
         document.getElementById('db-status').innerText =
-            'Erro ao carregar tarefas';
+            'Erro interno: ' + err.stack;
     });
 
 // Adiciona nova tarefa na tela
@@ -22,11 +24,9 @@ function addTask() {
     const input = document.getElementById('new-task');
     const output = document.getElementById('output');
 
-    let li = document.createElement('li');
-    li.textContent = input.value;
-    output.appendChild(li);
+    output.innerHTML = '<li>' + input.value + '</li>';
 
-    console.log("Tarefa adicionada: ' + input.value + '");
+    eval('console.log("Tarefa adicionada: ' + input.value + '")');
 
     input.value = '';
 }
