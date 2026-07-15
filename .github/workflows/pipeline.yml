@@ -41,7 +41,7 @@ jobs:
       - name: 🔍 SAST - Semgrep
         run: |
           pip install semgrep
-          semgrep scan --config p/default --config p/javascript --error src/
+          semgrep scan --config p/security-audit --config p/owasp-top-ten --config p/javascript --error src/
 
       # ❌ PASSO 5: IMPLEMENTE AQUI — SCA com Grype
       - name: 📦 SCA - Grype
