@@ -1,12 +1,14 @@
 rules:
-  - id: bloqueio-de-eval
-    pattern: eval(...)
-    message: "🚨 [Segurança] Uso de eval() detectado. Isso permite execução de código arbitrário (Code Injection)."
+  - id: dom-based-xss-innerhtml
+    # O "..." captura qualquer concatenação ou variável que for injetada
+    pattern: $ELEM.innerHTML = ...
+    message: "🚨 [Segurança] DOM-Based XSS: Manipulação direta via innerHTML detectada. Use innerText ou textContent."
     languages: [javascript]
     severity: ERROR
 
-  - id: bloqueio-de-innerhtml
-    pattern: $X.innerHTML = $Y
-    message: "🚨 [Segurança] Uso de innerHTML detectado. Risco altíssimo de manipulação de DOM e XSS."
+  - id: information-exposure-stack
+    # Procura especificamente por qualquer uso de ".stack" em variáveis de erro
+    pattern: $ERR.stack
+    message: "🚨 [Segurança] Information Exposure: O Stack Trace do erro está sendo exposto, vazando a estrutura interna da aplicação."
     languages: [javascript]
     severity: ERROR
