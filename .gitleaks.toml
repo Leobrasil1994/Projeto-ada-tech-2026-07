@@ -1,6 +1,5 @@
-
 [[rules]]
 id = "generic-hardcoded-password"
 description = "Senha hardcoded em variavel"
 regex = '''(?i)(password|passwd|pwd|senha|db_password)\s*[=:]\s*["'][^"']{4,}["']'''
-keywords = ["password", "passwd", "pwd", "senha","key"]
+keywords = ["password", "passwd", "pwd", "senha","api_key"]
